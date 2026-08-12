@@ -47,3 +47,18 @@ void init_free(ll M) {
     free_head->size = M;
     free_head->next = NULL;
 }
+/*模块3：已分配链表查询工具函数 find_alloc
+功能：根据id遍历链表查找已分配块，不存在返回NULL
+ 依赖：ALLOC/FREE/QUERY 全部命令共用*/
+
+AllocNode* find_alloc(const char* id) {
+    AllocNode* p = alloc_head;
+    while (p != NULL) {
+        // id字符串匹配
+        if (strcmp(p->id, id) == 0) {
+            return p;
+        }
+        p = p->next;
+    }
+    return NULL;
+}
